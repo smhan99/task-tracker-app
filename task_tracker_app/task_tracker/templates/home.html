@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+
+<br><br>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-3">
+            <div class="list-group list-group-dark">
+              <a href="{% url 'home' %}" class="list-group-item active">Menu</a>
+              <a href="{% url 'add' %}" class="list-group-item">Add Task</a>
+              <a href="{% url 'home' %}" class="list-group-item">Sort Tasks by Title</a>
+              <a href="{% url 'home' %}" class="list-group-item">Sort Tasks by Status</a>
+              <a href="{% url 'home' %}" class="list-group-item">Sort Tasks by Due Date</a>
+            </div>
+        </div>
+        <div class="col-lg-9">
+        {% if all_tasks %}
+        <table class="table table-bordered">
+            <tr class="table-secondary">
+                <td>Task</td>
+                <td><center>Description</center></td>
+                <td><center>Status</center></td>
+                <td><center>Due Date</center></td>
+                <td><center>Update</center></td>
+                <td><center>Delete</center></td>
+            </tr>
+            {% for things in all_tasks %}
+                    <tr class="table-secondary">
+                        <td>{{ things.task }}</td>
+                        <td><center>{{ things.description }}</center></td>
+                        <td><center>{{ things.status }}</center></td>
+                        <td><center>{{ things.due_date }}</center></td>
+                        <td><center><a href="{% url 'edit' things.pk %}">Update</a></center></td>
+                        <td><center><a href="{% url 'delete' things.pk %}">Delete</a></center></td>
+                    </tr>
+            {% endfor %}
+        </table>
+       {% endif %}
+       
+    </div>
+
+
+    </div>
+</div>
+
+{% endblock %}

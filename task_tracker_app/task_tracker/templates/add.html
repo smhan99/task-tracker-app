@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+
+<div class="container">
+    <br><br>
+      <h1 class="text-center my-4">Create New Task</h1>
+      <form method="POST">
+          {% csrf_token %}
+          <input type="hidden" name="user_id" value="{{ request.user.id }}">
+          {{ form|crispy }}  
+          <br>                  
+          <button class="btn btn-success" type="submit">Create Task</button>
+      </form>
+</div>
+<br><br>
+{% endblock %}
