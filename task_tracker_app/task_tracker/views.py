@@ -109,3 +109,4 @@ def logout_view(request):
     messages.success(request, f'You have logged out successfully!')
     return redirect('login_view')
 
+
