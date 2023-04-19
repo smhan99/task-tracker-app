@@ -9,8 +9,6 @@ from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login, logout
 
-
-
 # API VIEWS
 
 # SHOWS ALL TASKS, ADMIN CAN CREATE AND GET ALL TASKS

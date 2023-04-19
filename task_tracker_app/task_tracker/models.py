@@ -12,13 +12,15 @@ class Task(models.Model):
         ('completed', 'Completed'),
         ('cancelled', 'Cancelled'),
     )
-    
+
+    #auto primary key
+    #cascade: if user deleted, delete all tasks for user, null=True field is nonNull
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, related_name='tasks')
     task = models.CharField(max_length=255)
     description = models.TextField()
     status = models.CharField(max_length=255, choices=TASK_STATUS_CHOICES, default='in progress')
     due_date = models.DateField(blank=False)
-    created_date = models.DateTimeField(auto_now_add=True)
+    created_date = models.DateTimeField(auto_now_add=True) #auto_now: last modified time
 
     def clean(self):
         if self.due_date < timezone.now().date():
