@@ -4,6 +4,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 
 import { auth } from "../pages/config/firebase-config";
 import { logUserOut, getUserDisplayName } from "../pages/helper/user-auth";
+import './NavBar.css'
 
 export const NavBar = () => {
   const [name, setName] = useState("");
@@ -15,12 +16,12 @@ export const NavBar = () => {
 
   return (
     <div className="navbar">
-      <div className="links">
+      <div className="links-nav">
         <Link to="/"> Home </Link>
         {user ? (
           <>
-          Hi, {name}
-          <button onClick={logUserOut}> Log Out</button>
+          <div>Hi, {name}</div>
+          <button onClick={logUserOut} className="logoutBtn"> Log Out</button>
           </>
         ) : (
           <Link to="/login"> Login </Link>

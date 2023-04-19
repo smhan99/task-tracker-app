@@ -1,0 +1,20 @@
+.links-nav{
+    width:100%;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 6rem;
+    font-family: 'Roboto', sans-serif;
+    font-size: larger;
+}
+
+.logoutBtn{
+    color:white;
+    border:0;
+    border-radius: .2rem;
+    background-color: #8BC6EC;
+    background-image: linear-gradient(135deg, #8BC6EC 0%, #9599E2 100%);
+    height: 33px;
+    width: 82px;
+    font-size: medium;
+}

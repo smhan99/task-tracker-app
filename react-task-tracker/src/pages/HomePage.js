@@ -61,6 +61,7 @@ export const HomePage = () => {
                   <TableCell align="right"><Button type="button" onClick={() => setSortConfig('status')}>Status</Button></TableCell>
                   <TableCell align="right"><Button type="button" onClick={() => setSortConfig('created')}>Created On</Button></TableCell>
                   <TableCell align="right"><Button type="button" onClick={() => setSortConfig('due')}>Due</Button></TableCell>
+                  {/* <Tablecell><Button>Delete</Button></Tablecell> */}
                 </TableRow>
               </TableHead>
               <TableBody>
@@ -71,6 +72,7 @@ export const HomePage = () => {
                     <TableCell align="right">{getTaskStatus(task.status)}</TableCell>
                     <TableCell align="right">{task.created.toDate().toDateString()}</TableCell>
                     <TableCell align="right">{task.due.toDate().toDateString()}</TableCell>
+                    {/* <Tablecell><Button>Delete</Button></Tablecell> */}
                   </TableRow>
                 ))}
               </TableBody>
