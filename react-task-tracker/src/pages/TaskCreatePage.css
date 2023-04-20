@@ -1,0 +1,65 @@
+.createTaskForm{
+
+    font-family: 'Roboto', sans-serif;
+    padding-top: 0;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: solid transparent 2px;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 3px 8px;
+    border-radius: 20px;;
+    background-color: white;
+    height:40rem;
+    width:60rem;
+    margin-bottom: 20rem;;
+}
+
+.CreateFormContainer{
+
+    height:90vh;
+     display:flex;
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+}
+
+.inputLayout{
+
+    display:flex;
+    width:80%;
+    justify-content: center;
+    align-items: center;
+    padding:15px;
+
+}
+
+.input1{
+    width:72.5%;
+    margin-left:4.2rem;
+    height:3rem;
+}
+
+#description{
+    width:73%;
+    margin-left:20px;
+    height:6rem;
+}
+
+#due{
+    width:73%;
+    margin-left:2.4rem;
+    height:1.5rem
+}
+
+.CreateBtn{
+    color:white;
+    border:0;
+    border-radius: .2rem;
+    background-color: #8BC6EC;
+    background-image: linear-gradient(135deg, #8BC6EC 0%, #9599E2 100%);
+    height: 33px;
+    width: 82px;
+    font-size: medium;
+    margin:15px;
+}
