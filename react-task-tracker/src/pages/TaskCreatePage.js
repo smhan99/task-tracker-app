@@ -26,20 +26,28 @@ export const TaskCreatePage = () => {
   return (
     <div>
       <h1>Create a new task</h1>
-      <label htmlFor="title">Title:</label><br/>
+
+      <label htmlFor="title" className="label">Title:</label><br/>
+      <br></br>
       <input
         type="text"
         id="title"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
         placeholder="Task Title"/><br/>
-      <label htmlFor="description">Description:</label><br/>
+
+      <label htmlFor="description" className="label">Description:</label><br/>
+      <br></br>
       <textarea
         id="description"
         value={description}
         onChange={(e) => setDescription(e.target.value)}
-        placeholder="Task Description"/><br/>
-      <label htmlFor="due">Due Date:</label><br/>
+        placeholder="Task Description"
+        className="description-field"/><br/>
+      <br></br>
+      
+      <label htmlFor="due" className="label">Due Date:</label><br/>
+      <br></br>
       <input
         type="date" 
         id="due"
