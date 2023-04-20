@@ -5,6 +5,9 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { NavBar } from "./components/NavBar";
 import { HomePage } from "./pages/HomePage";
 import { LoginPage } from "./pages/LoginPage"; 
+import { RegisterPage } from "./pages/RegisterPage";
+import { ResetPage } from "./pages/ResetPage";
+import { TaskCreatePage } from "./pages/TaskCreatePage";
 
 
 function App() {
@@ -15,6 +18,9 @@ function App() {
         <Routes>
           <Route path="/" element={ <HomePage /> } />
           <Route path="/login" element={ <LoginPage /> } />
+          <Route path="/register" element={ <RegisterPage /> } />
+          <Route path="/reset" element={ <ResetPage /> } />
+          <Route path="/create-task" element={ <TaskCreatePage /> } />
         </Routes>
       </Router>
     </div>
