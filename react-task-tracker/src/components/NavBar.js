@@ -5,6 +5,9 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../pages/config/firebase-config";
 import { logUserOut, getUserDisplayName } from "../pages/helper/user-auth";
 
+import "./NavBar.css";
+
+
 export const NavBar = () => {
   const [name, setName] = useState("");
   const [user] = useAuthState(auth); //, loading, error
@@ -20,7 +23,7 @@ export const NavBar = () => {
         {user ? (
           <>
           Hi, {name}
-          <button onClick={logUserOut}> Log Out</button>
+          <button onClick={logUserOut} className="logout-button">Log Out</button>
           </>
         ) : (
           <Link to="/login"> Login </Link>

@@ -6,6 +6,9 @@ import moment from 'moment';
 import { createNewTask } from "./helper/task";
 import { auth } from "./config/firebase-config";
 
+import "./TaskCreatePage.css";
+
+
 
 export const TaskCreatePage = () => {
   const [user] = useAuthState(auth);
@@ -43,7 +46,7 @@ export const TaskCreatePage = () => {
         value={moment(due).format('YYYY-MM-DD')}
         onChange={(e) => setDue(new Date(e.target.value))}/><br/>
       
-      <button onClick={onCreate}>
+      <button onClick={onCreate} className="create-button">
           Create!
       </button>
     </div>
