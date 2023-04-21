@@ -15,7 +15,7 @@ export const LoginPage = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (user) navigate("/");
+    if (user) navigate("/task-tracker-app/");
     // eslint-disable-next-line
   }, [user]);
   
@@ -53,8 +53,8 @@ export const LoginPage = () => {
       <button className="login__btn login__google" onClick={signInWithGoogle}>
           Login with Google
       </button>
-      <div> <Link to="/reset">Forgot Password?</Link> </div>
-      <div> Don't have an account? <Link to="/register">Register</Link> now.</div>
+      <div> <Link to="/task-tracker-app/reset">Forgot Password?</Link> </div>
+      <div> Don't have an account? <Link to="/task-tracker-app/register">Register</Link> now.</div>
 
     </div>
   );

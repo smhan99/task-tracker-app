@@ -20,7 +20,7 @@ export const TaskCreatePage = () => {
     if (due <= Date.now()) alert("Cannot create due date in the past");
     else  {
       await createNewTask(user.uid, title, description, due);
-      navigate("/");
+      navigate("/task-tracker-app/");
     }
   }
 

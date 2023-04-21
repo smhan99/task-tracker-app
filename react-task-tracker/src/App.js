@@ -17,12 +17,12 @@ function App() {
       <Router>
         <NavBar />
         <Routes>
-          <Route path="/" element={ <HomePage /> } />
-          <Route path="/login" element={ <LoginPage /> } />
-          <Route path="/register" element={ <RegisterPage /> } />
-          <Route path="/reset" element={ <ResetPage /> } />
-          <Route path="/create-task" element={ <TaskCreatePage /> } />
-          <Route path="/edit-task" element={ <TaskEditPage /> } />
+          <Route path="/task-tracker-app" element={ <HomePage /> } />
+          <Route path="/task-tracker-app/login" element={ <LoginPage /> } />
+          <Route path="/task-tracker-app/register" element={ <RegisterPage /> } />
+          <Route path="/task-tracker-app/reset" element={ <ResetPage /> } />
+          <Route path="/task-tracker-app/create-task" element={ <TaskCreatePage /> } />
+          <Route path="/task-tracker-app/edit-task" element={ <TaskEditPage /> } />
         </Routes>
       </Router>
     </div>

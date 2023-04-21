@@ -26,7 +26,7 @@ export const TaskEditPage = () => {
       uid: task.uid,
     }
     await updateTask(task.id, newTask);
-    navigate("/");
+    navigate("/task-tracker-app/");
   }
 
   useEffect(() => {
