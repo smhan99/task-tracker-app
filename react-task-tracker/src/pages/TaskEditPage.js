@@ -1,28 +1,40 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
+import { Timestamp } from "firebase/firestore"; 
 import moment from "moment";
-import { doc, updateDoc, Timestamp } from "firebase/firestore";
 
-import { db } from "./config/firebase-config";
+import { updateTask, getTaskStatus } from "./helper/task";
 
-export const TaskEditPage = (props) => {
+export const TaskEditPage = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [status, setStatus] = useState(0);
   const [due, setDue] = useState(Date.now());
+
+  const location = useLocation();
+  const { task } = location.state;
+
+  const navigate = useNavigate();
   
   const onEdit = async () => {
-    const taskRef = doc(db, "tasks", "FFarU4wvlZ7yySK5MycN"); //prop.taskId
-
-    // Set the "capital" field of the city 'DC'
-    await updateDoc(taskRef, {
+    const newTask = {
       title: title,
       description: description,
       status: status,
-      created: Timestamp.fromDate(new Date()),
-      due: due,
-      uid: uid,
-    });
+      due: Timestamp.fromDate(due),
+      created: new Timestamp(task.created.seconds, task.created.nanoseconds),
+      uid: task.uid,
+    }
+    await updateTask(task.id, newTask);
+    navigate("/");
   }
+
+  useEffect(() => {
+    setTitle(task.title);
+    setDescription(task.description);
+    setStatus(task.status);
+    setDue(new Date(task.due.seconds * 1000));
+  }, [task])
 
   return (
     <div>
@@ -48,12 +60,10 @@ export const TaskEditPage = (props) => {
 
       <label htmlFor="status" className="label">Status:</label><br/>
       <br></br>
-      <input
-        type="number"
-        id="status"
-        value={status}
-        onChange={(e) => setStatus(e.target.value)}
-        className="status-field"/><br/>
+      <select id="status" size="2" value={status.toString()} onChange={(e) => setStatus(parseInt(e.target.value))}>
+        <option value="0">{getTaskStatus(0)}</option>
+        <option value="1">{getTaskStatus(1)}</option>
+      </select><br/>
       <br></br>
       
       <label htmlFor="due" className="label">Due Date:</label><br/>
@@ -64,8 +74,8 @@ export const TaskEditPage = (props) => {
         value={moment(due).format('YYYY-MM-DD')}
         onChange={(e) => setDue(new Date(e.target.value))}/><br/>
       
-      <button onClick={onEdit} className="create-button">
-      Create!
+      <button onClick={onEdit} className="edit-button">
+      Save Changes!
       </button>
     </div>
   )

@@ -8,8 +8,6 @@ import { auth } from "./config/firebase-config";
 
 import "./TaskCreatePage.css";
 
-
-
 export const TaskCreatePage = () => {
   const [user] = useAuthState(auth);
   const navigate = useNavigate();
@@ -19,8 +17,11 @@ export const TaskCreatePage = () => {
   const [due, setDue] = useState(Date.now());
 
   const onCreate = async () => {
-    await createNewTask(user.uid, title, description, due);
-    navigate("/");
+    if (due <= Date.now()) alert("Cannot create due date in the past");
+    else  {
+      await createNewTask(user.uid, title, description, due);
+      navigate("/");
+    }
   }
 
   return (

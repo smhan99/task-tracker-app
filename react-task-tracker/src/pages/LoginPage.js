@@ -8,7 +8,7 @@ import { login, signInWithGoogle } from "./helper/user-auth";
 import '../App.css';
 
 export const LoginPage = () => {
-  const [loginEmail, setLoginEmail] = useState("");
+  const [loginUsername, setLoginUsername] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
   const [user] = useAuthState(auth); //, loading, error
 
@@ -23,7 +23,7 @@ export const LoginPage = () => {
   const checkKeyPress = (e) => {
     const { key } = e;
     if (key === "Enter") {
-      login(loginEmail, loginPassword);
+      login(loginUsername, loginPassword);
     }
   };
 
@@ -33,9 +33,9 @@ export const LoginPage = () => {
       <input
         type="text"
         className="login__textBox"
-        value={loginEmail}
-        onChange={(e) => setLoginEmail(e.target.value)}
-        placeholder="E-mail Address"
+        value={loginUsername}
+        onChange={(e) => setLoginUsername(e.target.value)}
+        placeholder="Username"
         onKeyDown={checkKeyPress} />
       <input
         type="password"
@@ -46,7 +46,7 @@ export const LoginPage = () => {
         onKeyDown={checkKeyPress} />
       <button
         className="login__btn"
-        onClick={() => login(loginEmail, loginPassword)} >
+        onClick={() => login(loginUsername, loginPassword)} >
         Login
       </button>
 

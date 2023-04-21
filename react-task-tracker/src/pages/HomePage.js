@@ -41,7 +41,7 @@ export const HomePage = () => {
   useEffect(() => {
     if (user) {
       getUserTasks(user.uid).then((tasks) => setTasks(tasks));
-      getUserDisplayName(user.uid).then((displayName) => setName(displayName))
+      getUserDisplayName(user.uid).then((displayName) => setName(displayName));
     }
   }, [user])
 
@@ -66,13 +66,13 @@ export const HomePage = () => {
               </TableHead>
               <TableBody>
                 {tasks && sortedTasks.map(task => (
-                  <TableRow key={task.title} >
+                  <TableRow key={task.id} >
                     <TableCell component="th" scope="row">{task.title}</TableCell>
                     <TableCell align="right">{task.description}</TableCell>
                     <TableCell align="right">{getTaskStatus(task.status)}</TableCell>
                     <TableCell align="right">{task.created.toDate().toDateString()}</TableCell>
                     <TableCell align="right">{task.due.toDate().toDateString()}</TableCell>
-                    <TableCell align="right"><Link to="/edit-task" state={{ title:task.title }}>Next Step</Link></TableCell>
+                    <TableCell align="right"><Link to="/edit-task" state={{ task: task }}>Edit Task</Link></TableCell>
                   </TableRow>
                 ))}
               </TableBody>

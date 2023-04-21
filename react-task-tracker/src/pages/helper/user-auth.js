@@ -4,11 +4,13 @@ import { signInWithPopup,
          createUserWithEmailAndPassword,
          sendPasswordResetEmail,
          signOut,
-         GoogleAuthProvider
+         GoogleAuthProvider,
         } from "firebase/auth";
 import { getDoc,
          setDoc,
          doc,
+         getDocs,
+         collection,
         } from "firebase/firestore";
 
 const googleProvider = new GoogleAuthProvider();
@@ -23,6 +25,7 @@ const signInWithGoogle = async () => {
         authProvider: "google",
         email: user.email,
         tasks: [],
+        username: "",
       });
     }
   } catch (err) {
@@ -31,19 +34,25 @@ const signInWithGoogle = async () => {
   }
 };
 
-const login = async (loginEmail, loginPassword) => {
-  try {
-    await signInWithEmailAndPassword(
-      auth,
-      loginEmail,
-      loginPassword
-    );
-  } catch (error) {
-    alert("Login Error:" + error.message);
+const login = async (loginUsername, loginPassword) => {
+  const emailSnap = await getDoc(doc(db, "username-email", loginUsername));
+  if (emailSnap.exists()) {
+    let loginEmail = emailSnap.data().email;
+    try {
+      await signInWithEmailAndPassword(
+        auth,
+        loginEmail,
+        loginPassword
+      );
+    } catch (error) {
+      alert("Invalid Credentials");
+    }
+  } else {
+    alert("Invalid Credentials");
   }
 };
 
-const registerWithEmailAndPassword = async (name, email, password) => {
+const registerWithEmailAndPassword = async (name, username, email, password) => {
   try {
     const res = await createUserWithEmailAndPassword(auth, email, password);
     const user = res.user;
@@ -51,8 +60,10 @@ const registerWithEmailAndPassword = async (name, email, password) => {
       name,
       authProvider: "local",
       email,
+      username,
       tasks: [],
-    });
+    })
+    await setDoc(doc(db, "username-email", username), {email});
   } catch (err) {
     console.error(err);
     alert(err.message);
@@ -78,6 +89,15 @@ const getUserDisplayName = async (uid) => {
   return userSnap.data().name;
 }
 
+const getUsernames = async () => {
+  const querySnapshot = await getDocs(collection(db, "username-email"));
+  let usernameList = []
+  querySnapshot.forEach((doc) => {
+    usernameList.push(doc.id);
+  });
+  return usernameList;
+}
+
 export {
   signInWithGoogle,
   login,
@@ -85,4 +105,5 @@ export {
   sendPasswordReset,
   logUserOut,
   getUserDisplayName,
+  getUsernames,
 }

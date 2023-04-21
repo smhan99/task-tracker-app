@@ -11,7 +11,7 @@ const getUserTasks = async (uid) => {
   const taskSnapshot = await getDocs(taskQuery);
   let tasks = [];
   taskSnapshot.forEach((doc) => {
-    tasks.push(doc.data());
+    tasks.push({...doc.data(), id: doc.id});
   })
   return tasks;
 }
@@ -28,7 +28,7 @@ const createNewTask = async (uid, title, description, due) => {
     uid: uid,
     status: 0,
     created: Timestamp.fromDate(new Date()),
-    due: Timestamp.fromDate(due)
+    due: Timestamp.fromDate(new Date(due))
   }
   const taskRef = await addDoc(collection(db, "tasks"), task);
   const userRef = doc(db, "users", uid);
@@ -37,8 +37,15 @@ const createNewTask = async (uid, title, description, due) => {
   });
 }
 
+const updateTask = async (id, task) => {
+  const taskRef = doc(db, "tasks", id);
+
+  await updateDoc(taskRef, task);
+}
+
 export {
   getTaskStatus,
   getUserTasks,
-  createNewTask
+  createNewTask,
+  updateTask,
 }
