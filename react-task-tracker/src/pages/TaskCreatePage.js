@@ -17,7 +17,7 @@ export const TaskCreatePage = () => {
   const [due, setDue] = useState(Date.now());
 
   const onCreate = async () => {
-    if (due <= Date.now()) alert("Cannot create due date in the past");
+    if (due < Date.now()) alert("Cannot create due date in the past");
     else  {
       await createNewTask(user.uid, title, description, due);
       navigate("/task-tracker-app/");
@@ -52,7 +52,7 @@ export const TaskCreatePage = () => {
       <input
         type="date" 
         id="due"
-        value={moment(due).format('YYYY-MM-DD')}
+        value={moment.utc(due).format('YYYY-MM-DD')}
         onChange={(e) => setDue(new Date(e.target.value))}/><br/>
       
       <button onClick={onCreate} className="create-button">

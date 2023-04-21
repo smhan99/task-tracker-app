@@ -71,7 +71,7 @@ export const TaskEditPage = () => {
       <input
         type="date" 
         id="due"
-        value={moment(due).format('YYYY-MM-DD')}
+        value={moment.utc(due).format('YYYY-MM-DD')}
         onChange={(e) => setDue(new Date(e.target.value))}/><br/>
       
       <button onClick={onEdit} className="edit-button">
