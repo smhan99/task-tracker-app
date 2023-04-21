@@ -84,14 +84,14 @@ export const HomePage = () => {
                     <TableCell align="right">{getTaskStatus(task.status)}</TableCell>
                     <TableCell align="right">{task.created.toDate().toDateString()}</TableCell>
                     <TableCell align="right">{task.due.toDate().toDateString()}</TableCell>
-                    <TableCell align="right"><Button><Link to="/edit-task" state={{ task: task }}>Edit Task</Link></Button></TableCell>
+                    <TableCell align="right"><Button><Link to="/task-tracker-app/edit-task" state={{ task: task }}>Edit Task</Link></Button></TableCell>
                     <TableCell align="right"><DeleteButton taskId={task.id} index={index} handleDelete={handleDelete} open={open} setOpen={setOpen}/></TableCell>
                   </TableRow>
                 ))}
               </TableBody>
             </Table>
           </TableContainer>
-          <Link to="/create-task"><Button>New Task</Button></Link>
+          <Link to="/task-tracker-app/create-task"><Button>New Task</Button></Link>
           
         </div>
       ) : (

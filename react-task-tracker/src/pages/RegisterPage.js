@@ -31,7 +31,7 @@ export const RegisterPage = () => {
 
   useEffect(() => {
     if (user)
-      navigate("/");
+      navigate("/task-tracker-app/");
     // eslint-disable-next-line
   }, [user]);
 
@@ -84,7 +84,7 @@ export const RegisterPage = () => {
         </button>
 
         <div>
-          Already have an account? <Link to="/login">Login</Link>
+          Already have an account? <Link to="/task-tracker-app/login">Login</Link>
         </div>
       </div>
     </div>

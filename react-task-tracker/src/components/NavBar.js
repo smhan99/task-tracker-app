@@ -19,20 +19,20 @@ export const NavBar = () => {
 
   const signout = () => {
     logUserOut();
-    navigate("/");
+    navigate("/task-tracker-app");
   }
 
   return (
     <div className="navbar">
       <div className="links">
-        <Link to="/"> Home </Link>
+        <Link to="/task-tracker-app"> Home </Link>
         {user ? (
           <>
           Hi, {name}
           <button onClick={signout} className="logout-button">Log Out</button>
           </>
         ) : (
-          <Link to="/login"> Login </Link>
+          <Link to="/task-tracker-app/login"> Login </Link>
         )}
       </div>
     </div>

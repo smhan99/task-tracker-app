@@ -11,7 +11,7 @@ export const ResetPage = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (user) navigate("/");
+    if (user) navigate("/task-tracker-app/");
     // eslint-disable-next-line
   }, [user]);
 
@@ -30,7 +30,7 @@ export const ResetPage = () => {
           Send password reset email
         </button>
         <div>
-          Don't have an account? <Link to="/register">Register</Link> now.
+          Don't have an account? <Link to="/task-tracker-app/register">Register</Link> now.
         </div>
       </div>
     </div>
