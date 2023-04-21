@@ -1,5 +1,14 @@
 import { db } from "../config/firebase-config";
-import { collection, query, getDocs, where, Timestamp, addDoc, doc, updateDoc, arrayUnion } from "firebase/firestore"; 
+import { collection, 
+         query, 
+         getDocs, 
+         where, 
+         Timestamp, 
+         addDoc, 
+         doc, 
+         updateDoc, 
+         arrayUnion,
+         deleteDoc } from "firebase/firestore"; 
 
 const statusMap = {
   0: "In Progress",
@@ -43,9 +52,14 @@ const updateTask = async (id, task) => {
   await updateDoc(taskRef, task);
 }
 
+const deleteTask = async (id) => {
+  await deleteDoc(doc(db, "tasks", id));
+}
+
 export {
   getTaskStatus,
   getUserTasks,
   createNewTask,
   updateTask,
+  deleteTask,
 }
