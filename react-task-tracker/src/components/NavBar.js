@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
 
 import { auth } from "../pages/config/firebase-config";
@@ -11,10 +11,16 @@ import "./NavBar.css";
 export const NavBar = () => {
   const [name, setName] = useState("");
   const [user] = useAuthState(auth); //, loading, error
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (user) getUserDisplayName(user.uid).then((displayName) => setName(displayName))
   }, [user])
+
+  const signout = () => {
+    logUserOut();
+    navigate("/");
+  }
 
   return (
     <div className="navbar">
@@ -23,7 +29,7 @@ export const NavBar = () => {
         {user ? (
           <>
           Hi, {name}
-          <button onClick={logUserOut} className="logout-button">Log Out</button>
+          <button onClick={signout} className="logout-button">Log Out</button>
           </>
         ) : (
           <Link to="/login"> Login </Link>
