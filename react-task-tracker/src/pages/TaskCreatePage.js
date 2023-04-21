@@ -25,7 +25,7 @@ export const TaskCreatePage = () => {
   }
 
   return (
-    <div>
+    <div align="center">
       <h1>Create a new task</h1>
 
       <label htmlFor="title" className="label">Title:</label><br/>

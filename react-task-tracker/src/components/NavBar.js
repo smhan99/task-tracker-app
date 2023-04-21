@@ -25,14 +25,14 @@ export const NavBar = () => {
   return (
     <div className="navbar">
       <div className="links">
-        <Link to="/"> Home </Link>
+          <Link className="go-home" to="/"> Home</Link>
         {user ? (
-          <>
-          Hi, {name}
-          <button onClick={signout} className="logout-button">Log Out</button>
-          </>
+            <>
+              <strong className="greetings">Hi, {name}</strong>
+              <button className="logout-button" onClick={signout}> Log Out</button>
+            </>
         ) : (
-          <Link to="/login"> Login </Link>
+            <Link className="linkLogin" to="/login"> Login </Link>
         )}
       </div>
     </div>

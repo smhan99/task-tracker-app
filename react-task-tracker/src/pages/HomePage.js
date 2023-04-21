@@ -57,13 +57,13 @@ export const HomePage = () => {
   }
 
   return (
-    <div>
+    <div align="center">
       <h1>Home Page</h1>
       {user ? (
         <div>
-          Logged in as {name}
-          <h1> Your Tasks: </h1>
-          <TableContainer component={Paper} style={{width:"50%", marginLeft:"auto", marginRight:"auto"}}>
+          Logged in as <strong>{name}</strong>
+          <h2> Your Tasks: </h2>
+          <TableContainer component={Paper} style={{width:"90%", marginLeft:"auto", marginRight:"auto"}}>
             <Table aria-label="simple table">
               <TableHead>
                 <TableRow>

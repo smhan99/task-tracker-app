@@ -1,7 +1,32 @@
+div.navbar {
+  background-color: #7b68ee80 !important;
+  height: 37px;
+  border: 1px solid;
+  text-align: center;
+}
+
+.go-home {
+  font-size: 125%;
+  margin-left: 1%;
+  margin-right: 5%;
+}
+
 .logout-button {
+  margin-left: 5%;
+  margin-right: 1%;
+  margin-top: 1px;
+  margin-bottom: 1px;
+}
+
+.linkLogin {
+  font-size: 125%;
+  margin: 1%;
+}
+
+/*.logout-button {
     margin-left: 10px;
   }
 
   .links{
     margin-right: 10px;
-  }
+  }*/

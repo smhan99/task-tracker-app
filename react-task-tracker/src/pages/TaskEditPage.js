@@ -37,8 +37,8 @@ export const TaskEditPage = () => {
   }, [task])
 
   return (
-    <div>
-    <h1>Create a new task</h1>
+    <div align="center">
+    <h1>Edit task: {title}</h1>
 
       <label htmlFor="title" className="label">Title:</label><br/>
       <br></br>
